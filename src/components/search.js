@@ -1,9 +1,9 @@
+
 import React, { useState, useEffect, useContext } from 'react'
 import { UserContext } from '../context'
 export default function SearchProduct() {
     const [debouncedValue, setDebouncedValue] = useState("");
     const { data, search } = useContext(UserContext)
-    console.log(search)
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -17,8 +17,6 @@ export default function SearchProduct() {
     useEffect(() => {
         if (debouncedValue) {
             console.log("Searching for:", debouncedValue);
-            // Execute your API call or search logic here 
-
         }
     }, [debouncedValue]);
     return (

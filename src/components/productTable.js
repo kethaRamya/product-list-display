@@ -91,14 +91,16 @@ export default function ProductTable() {
                             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                             .map((row) => {
                                 return (
-                                    <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                                    <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
+                                       
                                         {columns.map((column) => {
                                             const value = row[column.id];
                                             return (
                                                 <TableCell key={column.id} align={column.align}>
                                                     {column.format && typeof value === 'number'
                                                         ? column.format(value)
-                                                        : column.id === 'edit' ? <div onClick={() => EditLink(row)}><EditIcon color="primary" /> </div> : value}
+                                                        : column.id === 'edit' ? <div onClick={() => EditLink(row)}><EditIcon color="primary" /> </div> 
+                                                        : column.id === 'createdAt' ?  <div>{moment(row.createdAt).format("l")}</div> : value }
 
 
                                                 </TableCell>
